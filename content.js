@@ -13,7 +13,7 @@ chrome.runtime.onMessage.addListener((req, sender, resp) => {
   text=text.replace(/\s+/g, '')
   var response=""
   var url =
-    "https://api.dandelion.eu/datatxt/sent/v1/?lang=en&text="+text+"&token=00912accafac40acafcf5693e9b5f3bf";
+    "https://api.dandelion.eu/datatxt/sent/v1/?lang=en&text="+text+"&token=${{secrets.KEYID}}";
   console.log(url)
   fetch(url)
     .then((res) => res.json())
