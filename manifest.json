@@ -1,0 +1,15 @@
+{
+    "name":"practice",
+    "version":"1.0",
+    "manifest_version": 2,
+    "content_scripts":[
+        {
+            "matches":["https://*.youtube.com/*"],
+            "js":["content.js"]
+        }
+    ],
+    "browser_action":{
+        "default_popup":"popup.html",
+        "default_title":"YTC"
+    }
+}
