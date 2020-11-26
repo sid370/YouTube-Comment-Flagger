@@ -1,7 +1,8 @@
 import string
 from collections import Counter
 import matplotlib.pyplot as plt
-text = open('read.txt', encoding='utf-8').read()
+#text = open('read.txt', encoding='utf-8').read()
+text = sys.argv[1]
 text = text.lower()
 text = text.translate(str.maketrans('', '', string.punctuation))
 cleaned_text = text
@@ -33,10 +34,11 @@ with open('emotions.txt', 'r') as file:
             emotion_list.append(emotion.strip())
 #print (emotion_list)
 w=Counter(emotion_list)
-print(w)
+#print(w)
+print(str(w.most_common(1)[0][0])+" : "+str(w.most_common(1)[0][1]))
 
 fig,ax1=plt.subplots()
 ax1.bar(w.keys(),w.values())
 fig.autofmt_xdate()
-#plt.savefig('fig.jpg')
-plt.show()
+plt.savefig('fig.jpg')
+#plt.show()
