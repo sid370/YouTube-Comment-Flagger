@@ -1,4 +1,5 @@
 import string
+import sys
 from collections import Counter
 import matplotlib.pyplot as plt
 #text = open('read.txt', encoding='utf-8').read()
@@ -35,7 +36,7 @@ with open('emotions.txt', 'r') as file:
 #print (emotion_list)
 w=Counter(emotion_list)
 #print(w)
-print(str(w.most_common(1)[0][0])+" : "+str(w.most_common(1)[0][1]))
+print(str(w.most_common(1)[0][0])+" : "+str(w.most_common(1)[0][1]),end="")
 
 fig,ax1=plt.subplots()
 ax1.bar(w.keys(),w.values())

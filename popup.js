@@ -6,6 +6,11 @@ document.addEventListener("DOMContentLoaded",()=>{
         })
     }
     function handleResp(){
-        console.log(handleResp)
+        var x = document.createElement("IMG");
+        x.setAttribute("src", "./semantic_analysis/fig.jpg");
+        x.setAttribute("width", "304");
+        x.setAttribute("height", "228");
+        x.setAttribute("alt", "Semantic Chart");
+        document.body.appendChild(x);
     }
 })
