@@ -8,9 +8,9 @@ chrome.runtime.onMessage.addListener((req, sender, resp) => {
   for (i = 0; i < list.length; i++) {
     text += list[i].innerText;
   }
-  text=text.replace(/[^0-9a-zA-Z]/gi, '')
+  text=text.replace(/[^0-9a-zA-Z ]/gi, '')
   text=text.replace(/(\r\n|\n|\r)/gm,"")
-  text=text.replace(/\s+/g, '')
+  //text=text.replace(/\s+/g, '')
   var response=""
   //var url =
   //  "https://api.dandelion.eu/datatxt/sent/v1/?lang=en&text="+text+"&token=00912accafac40acafcf5693e9b5f3bf";
@@ -27,9 +27,10 @@ chrome.runtime.onMessage.addListener((req, sender, resp) => {
   .then(res=>{
     const data=res.message
     alert(data)
+    sessionStorage.setItem("contentLoaded","true")
   })
   chrome.runtime.sendMessage({msg:"disp"},(res)=>{
     //console.log(res)
   })
-  resp({ list: list });
+  resp({ complete: true });
 });

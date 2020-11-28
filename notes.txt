@@ -1,0 +1,3 @@
+To get the comment elements:
+
+var ele = document.querySelectorAll("div[id='body'][class='style-scope ytd-comment-renderer']")[0]
