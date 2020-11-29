@@ -1,3 +1,10 @@
 To get the comment elements:
 
 var ele = document.querySelectorAll("div[id='body'][class='style-scope ytd-comment-renderer']")[0]
+
+To get the position to add:
+
+ele2.querySelector('a[class="yt-simple-endpoint style-scope yt-formatted-string"]').innerHTML =  ele2.querySelector('a[class="yt-simple-endpoint style-scope yt-formatted-string"]').innerHTML + "&emsp;<b>Positive</b>"
+
+To get the text: 
+ele3.querySelector('yt-formatted-string[id="content-text"]').innerText

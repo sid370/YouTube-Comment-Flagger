@@ -34,9 +34,13 @@ with open('emotions.txt', 'r') as file:
         if word in final_text:
             emotion_list.append(emotion.strip())
 #print (emotion_list)
+length = len(emotion_list)
 w=Counter(emotion_list)
 #print(w)
-print(str(w.most_common(1)[0][0])+" : "+str(w.most_common(1)[0][1]),end="")
+if (length==0):
+    print ("Neutral",end="")
+else:
+    print(str(w.most_common(1)[0][0]),end="")
 
 fig,ax1=plt.subplots()
 ax1.bar(w.keys(),w.values())
