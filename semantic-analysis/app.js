@@ -1,4 +1,3 @@
-const { spawn } = require("child_process")
 const express = require("express")
 const app = express()
 const morgan = require("morgan")
@@ -9,15 +8,16 @@ app.use(express.static(__dirname))
 app.get("/code/:text",(req,res)=>{
     const data = req.params.text
     const spawn = require("child_process").spawn
+    console.log(data)
     var process = spawn('python3',['./main.py',data])
     process.stdout.on('data',(data)=>{
         res.status(200).json({
-            message : data.toString(),
-            fig: `http://localhost:3001/fig.jpg`
+            message : data.toString()
         })
     })
 })
 
-app.listen(3001,()=>{
-    console.log("server running")
+const port = process.env.PORT || 3001
+app.listen(port,()=>{
+    console.log(port)
 })
