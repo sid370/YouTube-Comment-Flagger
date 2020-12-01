@@ -1,59 +1,6 @@
-//alert("only for google")
-//var list=document.querySelectorAll('.style-scope ytd-comment-renderer')
-//console.log(list)
-
-//chrome.runtime.onMessage.addListener((req, sender, resp) => {
-//  var list = document.querySelectorAll(".style-scope ytd-comment-renderer");
-//  var text = "";
-//  for (i = 0; i < list.length; i++) {
-//    text += list[i].innerText;
-//  }
-//  text=text.replace(/[^0-9a-zA-Z ]/gi, '')
-//  text=text.replace(/(\r\n|\n|\r)/gm,"")
-//  //text=text.replace(/\s+/g, '')
-//  var response=""
-//  //var url =
-//  //  "https://api.dandelion.eu/datatxt/sent/v1/?lang=en&text="+text+"&token=00912accafac40acafcf5693e9b5f3bf";
-//  //fetch(url)
-//  //  .then((res) => res.json())
-//  //  .then((resp) => {
-//  //      response=resp
-//  //    alert(resp.sentiment.type);
-//  //  });
-//
-//  var url="http://localhost:3001/code/"+text
-//  fetch(url)
-//  .then((res)=>res.json())
-//  .then(res=>{
-//    const data=res.message
-//    alert(data)
-//    sessionStorage.setItem("contentLoaded","true")
-//  })
-//  chrome.runtime.sendMessage({msg:"disp"},(res)=>{
-//    //console.log(res)
-//  })
-//  resp({ complete: true });
-//});
-//
-
-
-
 chrome.runtime.onMessage.addListener((req, sender, resp) => {
   console.log("In content")
   var list = document.querySelectorAll("div[id='body'][class='style-scope ytd-comment-renderer']")
-  var len = list.length
-  //for (i=0;i<2;i++){
-  //  var ele = list[i]
-  //  text = ele.querySelector('yt-formatted-string[id="content-text"]').innerText
-  //  text=text.replace(/[^0-9a-zA-Z ]/gi, '')
-  //  text=text.replace(/(\r\n|\n|\r)/gm,"")
-  //  await fetch ('http://localhost:3001/code/'+text)
-  //  .then(res=>res.json())
-  //  .then((res)=>{
-  //    ele.querySelector('a[class="yt-simple-endpoint style-scope yt-formatted-string"]').innerHTML =  ele.querySelector('a[class="yt-simple-endpoint style-scope yt-formatted-string"]').innerHTML + `&emsp;<b>${res.message}</b>`
-  //  })
-  //}
-  //list=Array.prototype.slice.call(list,18)
   list.forEach(async (each,i)=>{
     var ele = each
     text = ele.querySelector('yt-formatted-string[id="content-text"]').innerText
@@ -62,7 +9,7 @@ chrome.runtime.onMessage.addListener((req, sender, resp) => {
     await fetch ('http://localhost:3001/code/'+text)
     .then(res=>res.json())
     .then((res)=>{
-      ele.querySelector('a[class="yt-simple-endpoint style-scope yt-formatted-string"]').innerHTML =  ele.querySelector('a[class="yt-simple-endpoint style-scope yt-formatted-string"]').innerHTML + `&emsp;<b>${res.message}</b>`
+      ele.querySelector('a[class="yt-simple-endpoint style-scope yt-formatted-string"]').innerHTML =  ele.querySelector('a[class="yt-simple-endpoint style-scope yt-formatted-string"]').innerHTML + `&emsp;<span style="font-size:15px; padding: 1px; border: 2px solid white;"><b>${res.message}</b></span>`
     })
   })
   
