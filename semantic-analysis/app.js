@@ -15,6 +15,7 @@ app.get("/code/:text",(req,res)=>{
         res.status(200).json({
             message : data.toString()
         })
+        process.kill()
     })
 })
 

@@ -14,8 +14,6 @@ cd semantic-analysis/
 npm install
 node app.js
 ```
-[![npm version](https://badge.fury.io/js/hicat.svg)](https://npmjs.org/package/hicat "View this project on npm")
-
 
 ![banner](readme.png)
 
